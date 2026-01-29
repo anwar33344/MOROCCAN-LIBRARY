@@ -1,0 +1,897 @@
+/* Moroccan-inspired styles for the palace and library */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5dc; /* Beige background */
+    overflow: hidden;
+}
+
+.palace-view {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #87ceeb, #f0e68c); /* Sky to sand gradient */
+}
+
+.palace-video {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(-1); /* Mirror the video horizontally for reflective effect */
+    z-index: 1; /* Ensure video is above other elements */
+}
+
+.enter-button {
+    position: absolute;
+    top: 40%; /* Position above the door */
+    left: 55%; /* Position on the right side inside the door */
+    width: 40px; /* Smaller size */
+    height: 40px;
+    padding: 0;
+    font-size: 20px; /* Smaller font for the hand emoji */
+    background-color: rgba(139, 69, 19, 0.8); /* More visible saddle brown */
+    color: white;
+    border: 2px solid #8b4513;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    opacity: 1; /* Fully visible */
+    z-index: 10; /* Above the video */
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.enter-button:hover {
+    opacity: 1; /* Fully visible on hover */
+    transform: scale(1.5);
+}
+
+.door-opening {
+    animation: doorOpen 1s ease-in-out;
+}
+
+@keyframes doorOpen {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes doorClose {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.bookcase {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: url('MOROCAIN PEAPLE.jpeg') center center / contain no-repeat, linear-gradient(135deg, #8b4513, #a0522d); /* Full image background with wooden gradient fallback */
+    color: #f5f5dc;
+    overflow: hidden;
+    perspective: 1500px; /* 3D perspective */
+}
+
+.full-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.bookcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    animation: sparkle 3s infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.shelf {
+    position: absolute;
+    width: 90%;
+    height: 120px;
+    background-color: transparent;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin: 10px 0;
+}
+
+.shelf:nth-child(2) { top: 210px; } /* First shelf below image */
+.shelf:nth-child(3) { top: 340px; } /* Second shelf */
+.shelf:nth-child(4) { top: 470px; } /* Third shelf */
+.shelf:nth-child(5) { top: 600px; } /* Fourth shelf */
+.shelf:nth-child(6) { top: 730px; } /* Fifth shelf */
+.shelf:nth-child(7) { top: 860px; } /* Sixth shelf */
+.shelf:nth-child(8) { top: 990px; } /* Seventh shelf */
+
+.book {
+    width: 60px;
+    height: 150px;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 215, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-family: 'Times New Roman', serif;
+    color: #D4AF37;
+    text-align: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Leather textures */
+.book.brown {
+    background: linear-gradient(135deg, #5C4033, #8B4513, #654321);
+    border: 1px solid #3E2723;
+}
+
+.book.red {
+    background: linear-gradient(135deg, #8B0000, #B22222, #DC143C);
+    border: 1px solid #800000;
+}
+
+.book.green {
+    background: linear-gradient(135deg, #006400, #228B22, #32CD32);
+    border: 1px solid #004400;
+}
+
+/* Thickness variations */
+.book.thick {
+    width: 65px;
+}
+
+.book.medium {
+    width: 60px;
+}
+
+.book.thin {
+    width: 55px;
+}
+
+/* Aged effect */
+.book.aged {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(139, 69, 19, 0.3), 0 0 0 1px rgba(160, 82, 45, 0.5);
+    border-radius: 3px;
+    background: linear-gradient(135deg, #5C4033 0%, #8B4513 50%, #654321 100%), radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.2) 0%, transparent 50%);
+}
+
+/* Gold embossing effect */
+.book::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.3) 50%, transparent 70%);
+    border-radius: 1px;
+    pointer-events: none;
+}
+
+/* Warm lighting effect */
+.bookcase .book {
+    filter: sepia(10%) brightness(1.1) contrast(1.05);
+}
+
+.book-image {
+    width: 60px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.book .spine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+    border-radius: 2px;
+}
+
+.book:not(.popped-out) .spine {
+    z-index: 1;
+}
+
+.book.popped-out .spine {
+    z-index: -1;
+}
+
+.book .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5dc;
+    color: #2f1b14;
+    border-radius: 2px;
+    backface-visibility: hidden;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.book .cover.front {
+    transform: rotateY(0deg);
+}
+
+.book .cover.back {
+    transform: rotateY(180deg);
+}
+
+.book .pages {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 1px;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.book .page {
+    width: 45%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8px;
+    color: #2f1b14;
+    text-align: center;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.book .flip-button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #8b4513;
+    color: #f5f5dc;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.book.popped-out .flip-button {
+    opacity: 1;
+}
+
+.book .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #8b4513;
+    color: #f5f5dc;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.book.popped-out .close-button {
+    opacity: 1;
+}
+
+.book.popped-out {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 400px;
+    transform: translate(-50%, -50%) translateZ(300px) scale(1.5);
+    z-index: 100;
+}
+
+.book.popped-out::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.book.flipped {
+    transform: translateZ(200px) rotateY(180deg);
+}
+
+@keyframes pageTurn {
+    0% { transform: rotateY(0deg); }
+    50% { transform: rotateY(90deg); }
+    100% { transform: rotateY(180deg); }
+}
+
+.book.page-turning .pages {
+    animation: pageTurn 1s ease-in-out;
+}
+
+#back-to-palace {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #8b4513;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+}
+
+#back-to-palace:hover {
+    background-color: #a0522d;
+}
+
+.hidden {
+    display: none;
+}
+
+.history-book-button {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 80px;
+    height: 120px;
+    background: linear-gradient(135deg, #4B0082, #8A2BE2);
+    border: 3px solid #6A0DAD;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-size: 24px;
+    color: #F5F5DC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.history-book-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.history-book-button:active {
+    transform: scale(0.95);
+}
+
+.bookcase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-display {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    transform-style: preserve-3d;
+    justify-content: center;
+}
+
+.book-display .book {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    background: none; /* Remove background from shelf book styles */
+    box-shadow: none; /* Remove shadow */
+    border: none; /* Remove border */
+}
+
+.full-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.page-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.book-cover {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    background: linear-gradient(135deg, #8B0000, #DC143C);
+    border: 5px solid #654321;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.front-cover {
+    left: 0;
+    transform: rotateY(0deg);
+}
+
+.back-cover {
+    right: 0;
+    transform: rotateY(180deg);
+}
+
+.cover-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #8B0000, #DC143C);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+}
+
+.mandala {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #FFD700 20%, #FFA500 40%, #8B4513 60%, #654321 80%);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.mandala::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 5px solid #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.open-manuscript {
+    width: 600px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #F5F5DC;
+    border: 2px solid #D2B48C;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Amiri', serif;
+    font-size: 24px;
+    color: #2F1B14;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s, transform 1s;
+    transform-origin: right center;
+    backface-visibility: hidden;
+    z-index: 1;
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.page-content h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.page-content p {
+    margin: 10px 0;
+}
+
+.visual {
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+.page.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
+    z-index: 0;
+}
+
+.left-page {
+    left: 0;
+    transform: rotateY(0deg);
+    transform-origin: right center;
+}
+
+.right-page {
+    right: 0;
+    transform: rotateY(0deg);
+    transform-origin: left center;
+}
+
+.page.flipping-left {
+    transform: rotateY(-90deg);
+}
+
+.page.flipping-right {
+    transform: rotateY(90deg);
+}
+
+.decorative-border {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 3px solid #8B4513;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.calligraphy {
+    z-index: 1;
+    line-height: 1.6;
+}
+
+.calligraphy p {
+    margin: 10px 0;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.flip-button {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #8B4513, #A0522D);
+    color: #F5F5DC;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s;
+}
+
+.flip-button:hover {
+    background: linear-gradient(135deg, #A0522D, #8B4513);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .enter-button {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        top: 35%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .palace-video {
+        object-fit: cover;
+    }
+
+    #back-to-palace {
+        padding: 15px 30px;
+        font-size: 18px;
+        bottom: 10px;
+    }
+
+    .closet-image {
+        object-fit: contain;
+    }
+
+    .history-book-button {
+        width: 60px;
+        height: 90px;
+        font-size: 18px;
+        top: 20px;
+        left: 20px;
+    }
+
+    .bookcase {
+        background-size: cover;
+    }
+
+    .book-display img {
+        max-width: 90%;
+        height: auto;
+    }
+
+    .shelf {
+        width: 95%;
+        height: 100px;
+    }
+
+    .book {
+        width: 50px;
+        height: 120px;
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .enter-button {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        top: 30%;
+    }
+
+    .history-book-button {
+        width: 50px;
+        height: 75px;
+        font-size: 16px;
+        top: 15px;
+        left: 15px;
+    }
+
+    #back-to-palace {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .shelf {
+        height: 80px;
+    }
+
+    .book {
+        width: 40px;
+        height: 100px;
+        font-size: 6px;
+    }
+
+    .bookcase {
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+/* Book styles */
+body {
+    background-image: url("https://img.freepik.com/fotos-premium/foto-vista-superior-papeleria-cuadernos-boligrafos-carpeta-clips-lupa-taza-cafe-vasos-sobre-fondo-mesa-madera-aislado-copyspace-derecha_352249-4691.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.book-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+@media (max-width:768px) {
+    .book {
+        width: 300px;
+        height: 450px;
+    }
+
+}
+.title {
+    position: relative;
+    top: -0px;
+    left:50%;
+
+    transform: translateX(-50%);
+    font-size: 28px;
+    color: gold;
+    display: flex;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px black;
+    text-align: center;
+    margin-top: 20px;
+    z-index: 10;
+
+}
+@media (max-width:480px) {
+    .book {
+        width: 250px;
+        height: 380px;
+    }
+}
+.book {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background-image: url("cover.jpg.jpg");
+    position: relative;
+    perspective: 1500px;
+    z-index: 1;
+}
+ .page1,.page2,.page3,.page4,.page5{
+background: #eadedeea;
+color: black;
+z-index: 4;
+}
+.page1,.page2,.page3,.page4,.page5 {
+    width: 100%;
+    height: 100%;
+    background: #efe7bf;
+    border: 2px solid #15043e;
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    overflow-y: auto;
+    transition: transform 2s;
+    transform-origin: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+   .page {
+    background: rgb(217, 217, 209);
+    color: rgb(207, 142, 14);
+    font-weight: bold;
+    font-size: 22px;
+    z-index: 5;
+}
+.controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    top: 100%;
+    z-index: 10;
+}
+button {
+    background: #eee;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+
+}
+
+
+button:hover {
+    background: #333;
+
+}
+
+.page1 {
+background-image: url("cover.jpg.jpg");
+background-size:100% 100%;
+background-position: center;
+background-repeat: no-repeat;
+font-size: 30px;
+color: gold;
+
+
+
+}
+
+
+.page2 { background: rgb(236, 145, 48); color: black; z-index: 3; }
+.page3 { background: rgb(236, 145, 48); color: black; z-index: 2; }
+.page4 { background: rgb(236, 145, 48); color: black; z-index: 1; }
+.page5 {background:  rgb(11, 14, 207) ;color: black; z-index: 0;}
+  .page5 {
+    background-image: url("cover.jpg.jpg");
+    background-size: calc(100%-30px)auto;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+@media (max-width:600px) {
+    .page1 {
+     background-image: url("cover.jpg.jpg");
+background-size:100% 100%;
+background-position: center;
+background-repeat: no-repeat;
+font-size: 30px;
+color: gold;
+    }
+}
